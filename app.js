@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 require('dotenv').config();
 
-const { PORT = 3000 } = process.env;
+const { DB_URL = 'mongodb://localhost:27017/bitfilmsdb', PORT = 3000 } = process.env;
 const app = express();
 const cors = require('cors');
 const { userRoutes } = require('./routes/users');
@@ -20,12 +20,10 @@ const corsOptions = {
   origin: [
     'https://liamichev.nomoredomains.icu',
     'http://liamichev.nomoredomains.icu',
-    'http://localhost:7777',
   ],
   credentials: true,
   optionsSuccessStatus: 200,
 };
-
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -45,7 +43,7 @@ app.use(errors());
 app.use(errorHandler);
 
 async function main() {
-  await mongoose.connect('mongodb://localhost:27017/bitfilmsdb');
+  await mongoose.connect(DB_URL);
 
   await app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);

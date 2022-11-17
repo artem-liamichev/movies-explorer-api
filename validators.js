@@ -43,16 +43,13 @@ const validateMovieBody = celebrate({
     year: Joi.string().required(),
     description: Joi.string().required(),
     image: Joi.string().required()
-      // eslint-disable-next-line no-useless-escape
-      .regex(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+      .regex(/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -]*)*\/?$/)
       .message('Поле "image" должно быть валидным url-адресом'),
     trailerLink: Joi.string().required()
-      // eslint-disable-next-line no-useless-escape
-      .regex(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+      .regex(/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -]*)*\/?$/)
       .message('Поле "trailerLink" должно быть валидным url-адресом'),
     thumbnail: Joi.string().required()
-      // eslint-disable-next-line no-useless-escape
-      .regex(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+      .regex(/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -]*)*\/?$/)
       .message('Поле "thumbnail" должно быть валидным url-адресом'),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),

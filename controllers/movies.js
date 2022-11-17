@@ -3,7 +3,6 @@ const NotFoundError = require('../errors/NotFoundError');
 const BadRequestError = require('../errors/BadRequestError');
 const ForbiddenError = require('../errors/ForbiddenError');
 
-//возвращает все сохранённые текущим  пользователем фильмы
 const getMovies = (req, res, next) => {
   Movie.find({ owner: req.user._id })
     .then((movies) => res.send(movies))
@@ -13,17 +12,39 @@ const getMovies = (req, res, next) => {
 };
 
 const createMovie = (req, res, next) => {
-  const { country, director, duration, year, description, image, trailerLink, nameRU, nameEN, thumbnail, movieId } = req.body;
+  const {
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId,
+  } = req.body;
   const owner = req.user._id;
-  Movie.create({ country, director, duration, year, description, image, trailerLink, nameRU, nameEN, thumbnail, movieId, owner })
-    // .then((doc) => doc.populate(['owner']))
+  Movie.create({
+    country,
+    director,
+    duration,
+    year,
+    description,
+    image,
+    trailerLink,
+    nameRU,
+    nameEN,
+    thumbnail,
+    movieId,
+    owner,
+  })
     .then((movie) => {
-      console.dir(movie)
-      res.send(movie)
+      res.send(movie);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        console.dir('err:', err)
         next(new BadRequestError('Переданы некорректные данные'));
       } else {
         next(err);
