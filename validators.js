@@ -64,12 +64,6 @@ const validateAuthentication = celebrate({
   }),
 });
 
-const validateuserId = celebrate({
-  params: Joi.object().keys({
-    id: Joi.objectId(),
-  }),
-});
-
 const validatemovieId = celebrate({
   params: Joi.object().keys({
     _id: Joi.objectId(),
@@ -80,7 +74,6 @@ module.exports = {
   validateUserBody,
   validateUpdateUserInfoBody,
   validateAuthentication,
-  validateuserId,
   validatemovieId,
   validateMovieBody,
 };
