@@ -22,7 +22,7 @@ const validateUserBody = celebrate({
 
 const validateUpdateUserInfoBody = celebrate({
   body: Joi.object().keys({
-    name: Joi.string().min(2).max(30)
+    name: Joi.string().required().min(2).max(30)
       .messages({
         'string.min': 'Минимальная длина поля "name" - 2',
         'string.max': 'Максимальная длина поля "name" - 30',
@@ -43,13 +43,13 @@ const validateMovieBody = celebrate({
     year: Joi.string().required(),
     description: Joi.string().required(),
     image: Joi.string().required()
-      .regex(/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -]*)*\/?$/)
+      .regex(/^https?:\/\/(www\.)?[a-zA-Z0-9\-.]{1,}\.[a-zA-Z]{1,4}[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]{1,}/)
       .message('Поле "image" должно быть валидным url-адресом'),
     trailerLink: Joi.string().required()
-      .regex(/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -]*)*\/?$/)
+      .regex(/^https?:\/\/(www\.)?[a-zA-Z0-9\-.]{1,}\.[a-zA-Z]{1,4}[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]{1,}/)
       .message('Поле "trailerLink" должно быть валидным url-адресом'),
     thumbnail: Joi.string().required()
-      .regex(/^(https?:\/\/)?([\da-z-]+)\.([a-z]{2,6})([\w -]*)*\/?$/)
+      .regex(/^https?:\/\/(www\.)?[a-zA-Z0-9\-.]{1,}\.[a-zA-Z]{1,4}[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]{1,}/)
       .message('Поле "thumbnail" должно быть валидным url-адресом'),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
