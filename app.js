@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { errors } = require('celebrate');
 require('dotenv').config();
 
-const { DB_URL = 'mongodb://localhost:27017/bitfilmsdb', PORT = 3000 } = process.env;
+const { DB_URL = 'mongodb://localhost:27017/bitfilmsdb', PORT = 3001 } = process.env;
 const app = express();
 const cors = require('cors');
 const { userRoutes } = require('./routes/users');
@@ -20,6 +20,7 @@ const corsOptions = {
   origin: [
     'https://liamichev.nomoredomains.icu',
     'http://liamichev.nomoredomains.icu',
+    'http://localhost:3000',
   ],
   credentials: true,
   optionsSuccessStatus: 200,
