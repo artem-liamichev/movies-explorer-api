@@ -1,10 +1,17 @@
-# movies-explorer-api
-
-Репозиторий для приложения проекта `movies-explorer`, приложения со следующими возможностями: авторизации и регистрации пользователей, операции с фильмами. 
-
-IP 158.160.36.81
-Frontend https://liamichev.nomoredomains.icu
+# Project: Movies-explorer
+Frontend https://liamichev.nomoredomains.icu 
 Backend https://api.liamichev.nomoredomains.icu
 
-# Репозиторий
-https://github.com/artem-liamichev/movies-explorer-api.git
+This repository contains the Backend part of the application
+
+### Project Description and Functionality
+An application for searching movies with the ability to save favorites, as well as user authorization and registration.
+
+**The project was created using**
+- React;
+- JavaScript;
+- Express.js;
+- MongoDB;
+- HTML, CSS
+- Grid, Flexbox;
+  
